@@ -2,18 +2,28 @@ package com.codeclan.md;
 
 import java.util.ArrayList;
 
-public abstract class Animal {
+public class Animal {
 	
-	protected int id;
-	protected double value;
-//	protected ArrayList<AnimalFood> stomach;
+	private int animalId;
+	private double value;
+	private String type;
+	private ArrayList<AnimalFood> stomach;
 	
+	public Animal(String type, int animalId, double value){
+		this.type = type;
+		this.animalId = animalId;
+		this.value = value;
+		this.stomach = new ArrayList<AnimalFood>();
+	}
 	
+	public String getType() {
+		return type;
+	}
 	public int getId() {
-		return id;
+		return animalId;
 	}
 	public void setId(int id) {
-		this.id = id;
+		this.animalId = id;
 	}
 	public double getValue() {
 		return value;
@@ -21,13 +31,16 @@ public abstract class Animal {
 	public void setValue(double value) {
 		this.value = value;
 	}
-//	public ArrayList<AnimalFood> getStomach() {
-//		return stomach;
-//	}
-//	
-//	public void eat(AnimalFood animalFood){
-//		stomach.add(animalFood);
-//	}
+	public String getStomachContent() {
+		String list = "";
+		for( AnimalFood af : stomach){
+			list += af.getType()+", ";
+		}
+		return list;
+	}
+	public void eat(AnimalFood animalFood){
+		stomach.add(animalFood);
+	}
 	
 	
 }
